@@ -50,9 +50,13 @@ const weatherFinder = async (latitude, longitude) => {
     const response = await fetch(weatherAPI);
     const data = await response.json();
     const { feels_like, humidty, temp, temp_max, temp_min } = data.main;
+    const weatherCondition = data.weather[0].main;
+    console.log(weatherCondition);
     const cityName = data.name;
     console.log(data);
-    city.innerHTML = `<h2>${cityName}</h2> <h1>${temp}</h1> `;
-  } catch (error) {}
+    city.innerHTML = `<h2>${cityName}</h2> <h3> ${fullDate}</h3>  <h1> ${Math.round(temp)}°</h1> <h2> Precipitation </h2> <h3> Max: ${Math.round(temp_max)}° Min: ${Math.round(temp_min)}°</h3>`;
+  } catch (error) {
+
+  }
 };
 currentLocation();
