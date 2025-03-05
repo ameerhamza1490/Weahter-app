@@ -1,3 +1,32 @@
+const weatherData = document.querySelector("#weatherData");
+const city = document.querySelector("#city");
+
+const currentDate = new Date();
+
+const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const dayName = weekdays[currentDate.getDay()];
+const monthName = months[currentDate.getMonth()];
+const year = currentDate.getFullYear();
+const dayNumber = currentDate.getDate();
+
+const fullDate = `${dayName}, ${dayNumber} ${monthName} ${year}.`;
+console.log(fullDate);
+
 const currentLocation = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -23,6 +52,7 @@ const weatherFinder = async (latitude, longitude) => {
     const { feels_like, humidty, temp, temp_max, temp_min } = data.main;
     const cityName = data.name;
     console.log(data);
+    city.innerHTML = `<h2>${cityName}</h2> <h1>${temp}</h1> `;
   } catch (error) {}
 };
 currentLocation();
