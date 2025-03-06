@@ -38,3 +38,7 @@ body {
 .fa-magnifying-glass-arrow-right{
     cursor: pointer;
 }
+
+#columns{
+    border: 2px solid red;
+}
